@@ -10,8 +10,9 @@ public class Truck extends Transport<DriverD> implements Competing{
         this.carrying = carrying;
     }
 
-    public Truck(String brand, String model, double engineCapacity, Carrying n3) {
+    public Truck(String brand, String model, double engineCapacity, Carrying carrying) {
         super(brand, model, engineCapacity);
+        this.carrying = carrying;
     }
 
     @Override
@@ -29,7 +30,9 @@ public class Truck extends Transport<DriverD> implements Competing{
         if (carrying == null) {
             System.out.println("Данных по транспортному средству недостаточно");
         } else {
-            System.out.println("Тип кузова автомобиля: " + getCarrying());
+            String from = carrying.getFrom() == null?"":" от " + carrying.getFrom();
+            String to = carrying.getTo() == null?"":" от " + carrying.getTo();
+            System.out.println("Грузоподъемность: " + from + " " + to);
         }
     }
 
@@ -48,20 +51,23 @@ public class Truck extends Transport<DriverD> implements Competing{
         System.out.println("Грузовик " + getBrand() + " " + getModel() + " поехал с максимальной скорость: " );
     }
     public enum Carrying {
-        N1(3.5F),
-        N2(5.0F),
-        N3(12.0F);
-        private final float weight;
+        N1(0.0, 3.5),
+        N2(3.5,12.0),
+        N3(12.0, null);
+        private final Double From;
+        private final Double To;
 
-        Carrying(float weight) {
-            this.weight = weight;
+        Carrying(Double from, Double to) {
+            From = from;
+            To = to;
         }
 
-        public float getWeight() {
-            return weight;
+        public Double getFrom() {
+            return From;
         }
-        public String toString(){
-            return "Тип кузова: " + getWeight();
+
+        public Double getTo() {
+            return To;
         }
-    };
+    }
 }

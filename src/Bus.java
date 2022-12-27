@@ -10,8 +10,9 @@ public class Bus extends Transport<DriverC> implements Competing {
         this.capacity = capacity;
     }
 
-    public Bus(String brand, String model, double engineCapacity, Capacity middle) {
+    public Bus(String brand, String model, double engineCapacity, Capacity capacity) {
         super(brand, model, engineCapacity);
+        this.capacity = capacity;
     }
 
     @Override
@@ -26,7 +27,11 @@ public class Bus extends Transport<DriverC> implements Competing {
 
     @Override
     public void printType() {
-
+        if (capacity == null) {
+            System.out.println("Данных по транспортному средству недостаточно");
+        } else {
+            System.out.println("Вместимость автобуса: " + capacity.getFrom() + " " + capacity.getTo());
+        }
     }
 
     @Override
@@ -44,20 +49,27 @@ public class Bus extends Transport<DriverC> implements Competing {
         System.out.println("Автобус " + getBrand() + " " + getModel() + " проехал с максимальной скорость: ");
     }
     public enum Capacity{
-        ESPECIALLY_SMALL(10),
-        SMALL(25),
-        MIDDLE(50),
-        LARGE(80),
-        ESPECIALLY_LARGE(120);
+        ESPECIALLY_SMALL(0,10),
+        SMALL(10, 25),
+        MIDDLE(40, 50),
+        LARGE(60,80),
+        ESPECIALLY_LARGE(100,120);
 
-        private final int seats;
+        private final int from;
+        private final int to;
 
-        Capacity(int seats) {
-            this.seats = seats;
+
+        Capacity(int from, int to) {
+            this.from = from;
+            this.to = to;
         }
 
-        public int getSeats() {
-            return seats;
+        public int getFrom() {
+            return from;
+        }
+
+        public int getTo() {
+            return to;
         }
     }
 }

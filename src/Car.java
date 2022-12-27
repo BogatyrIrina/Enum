@@ -9,8 +9,9 @@ public class Car extends Transport<DriverB> implements Competing{
         this.bodyType = bodyType;
     }
 
-    public Car(String brand, String model, double engineCapacity, BodyType sedan) {
+    public Car(String brand, String model, double engineCapacity, BodyType bodyType) {
         super(brand, model, engineCapacity);
+        this.bodyType = bodyType;
 
     }
     @Override
@@ -28,7 +29,7 @@ public class Car extends Transport<DriverB> implements Competing{
         if (bodyType == null) {
             System.out.println("Данных по транспортному средству недостаточно");
         } else {
-            System.out.println("Тип кузова автомобиля: " + getBodyType());
+            System.out.println("Тип кузова автомобиля: " + bodyType);
         }
     }
 
@@ -64,10 +65,6 @@ public class Car extends Transport<DriverB> implements Competing{
         }
         public String getBodyTypeRus() {
             return bodyTypeRus;
-        }
-
-        public String toString(){
-            return "Тип кузова: " + getBodyTypeRus();
         }
     }
 }
