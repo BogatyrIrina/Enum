@@ -37,6 +37,11 @@ public class Truck extends Transport<DriverD> implements Competing{
     }
 
     @Override
+    public boolean service() {
+        return Math.random() > 0.75;
+    }
+
+    @Override
     public void pitStop() {
         System.out.println("Грузовик " + getBrand() + " " + getModel() + " делает пит-стоп");
     }

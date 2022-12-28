@@ -1,4 +1,4 @@
-public class Car extends Transport<DriverB> implements Competing{
+public class Car extends Transport<DriverB> implements Competing {
     BodyType bodyType;
 
     public BodyType getBodyType() {
@@ -14,6 +14,7 @@ public class Car extends Transport<DriverB> implements Competing{
         this.bodyType = bodyType;
 
     }
+
     @Override
     public void startMoving() {
         System.out.println("Автомобиль начинает движение");
@@ -31,6 +32,11 @@ public class Car extends Transport<DriverB> implements Competing{
         } else {
             System.out.println("Тип кузова автомобиля: " + bodyType);
         }
+    }
+
+    @Override
+    public boolean service() {
+        return Math.random() > 0.7;
     }
 
     @Override
@@ -60,9 +66,11 @@ public class Car extends Transport<DriverB> implements Competing{
         MPVs("Минивэн");
 
         private final String bodyTypeRus;
-        BodyType (String bodyTypeRus) {
+
+        BodyType(String bodyTypeRus) {
             this.bodyTypeRus = bodyTypeRus;
         }
+
         public String getBodyTypeRus() {
             return bodyTypeRus;
         }

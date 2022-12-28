@@ -11,7 +11,7 @@ public abstract class Driver {
         this.firstName = firstName;
         this.middleName = middleName;
         this.lastName = lastName;
-        this.drivingLicense = drivingLicense;
+        setDrivingLicense(drivingLicense);
         this.experience = experience;
     }
 
@@ -34,6 +34,15 @@ public abstract class Driver {
 
     public String getDrivingLicense() {
         return drivingLicense;
+    }
+
+
+
+    public void setDrivingLicense(String drivingLicense) {
+        if(drivingLicense == null){
+            throw new IllegalArgumentException("Необходимо указать тип прав!");
+        }
+        this.drivingLicense = drivingLicense;
     }
 
     public int getExperience() {

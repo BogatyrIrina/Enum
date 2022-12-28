@@ -1,3 +1,5 @@
+import com.sun.jdi.connect.Transport;
+
 public class Main {
     public static void main(String[] args) {
         Car granta = new Car("Lada", "Granta", 1.7, Car.BodyType.SEDAN);
@@ -63,5 +65,24 @@ public class Main {
                 "Категория D", 20);
         kamaz.drive(sidorov);
 
+        service( granta, (Transport) audi, (Transport) bmw, (Transport) kia,
+                (Transport) man, (Transport) citroen, (Transport) mercedes, (Transport) toyota,
+                (Transport) kamaz, (Transport) belaz, (Transport) zil, (Transport) maz);
+    }
+
+    private static void service(Transport...transports){
+        for (Transport transport : transports) {
+            serviceTransport(transport);
+        }
+    }
+    private static void serviceTransport(Transport transport){
+        try {
+            if (!transport.service()) {
+                throw new RuntimeException("Автомобиль " + transport.getBrand() + " "
+                        + transport.getModel() + " не прошел диагностику.");
+            }
+        } catch (RuntimeException e) {
+            System.out.println(e.getMessage());
+        }
     }
 }

@@ -34,6 +34,7 @@ public abstract class Transport<T extends Driver> {
                 + driver.getLastName() + ". Управляет транспортным средством " + getBrand() + " " + getModel() +
                 ". Будет учавстовать в заезде. ");
     }
+
     public void printTransport(){
         System.out.println("Марка автомобиля " + getBrand() +
                 ", модель " + getModel() +
@@ -70,4 +71,5 @@ public abstract class Transport<T extends Driver> {
             this.engineCapacity = engineCapacity;
         }
     }
+    public abstract boolean service();
 }
