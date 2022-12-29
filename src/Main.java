@@ -1,4 +1,4 @@
-import com.sun.jdi.connect.Transport;
+
 
 public class Main {
     public static void main(String[] args) {
@@ -34,19 +34,19 @@ public class Main {
         toyota.printTransport();
         toyota.printType();
 
-        Truck kamaz = new Truck( "КАМАЗ", "4310", 5, Truck.Carrying.N3);
+        Truck kamaz = new Truck("КАМАЗ", "4310", 5, Truck.Carrying.N3);
         kamaz.printTransport();
         kamaz.printType();
 
-        Truck belaz = new Truck( "БелАЗ", "75710", 5.5, Truck.Carrying.N3);
+        Truck belaz = new Truck("БелАЗ", "75710", 5.5, Truck.Carrying.N3);
         belaz.printTransport();
         belaz.printType();
 
-        Truck zil = new Truck( "ЗИЛ", "130", 5, Truck.Carrying.N3);
+        Truck zil = new Truck("ЗИЛ", "130", 5, Truck.Carrying.N3);
         zil.printTransport();
         zil.printType();
 
-        Truck maz = new Truck( "МАЗ", "7310", 6, Truck.Carrying.N3);
+        Truck maz = new Truck("МАЗ", "7310", 6, Truck.Carrying.N3);
         maz.printTransport();
         maz.printType();
 
@@ -65,17 +65,18 @@ public class Main {
                 "Категория D", 20);
         kamaz.drive(sidorov);
 
-        service( granta, (Transport) audi, (Transport) bmw, (Transport) kia,
-                (Transport) man, (Transport) citroen, (Transport) mercedes, (Transport) toyota,
-                (Transport) kamaz, (Transport) belaz, (Transport) zil, (Transport) maz);
+        service(granta, audi, bmw, kia,
+                man, citroen, mercedes, toyota,
+                kamaz, belaz, zil, maz);
     }
 
-    private static void service(Transport...transports){
+    private static void service(Transport... transports) {
         for (Transport transport : transports) {
             serviceTransport(transport);
         }
     }
-    private static void serviceTransport(Transport transport){
+
+    private static void serviceTransport(Transport transport) {
         try {
             if (!transport.service()) {
                 throw new RuntimeException("Автомобиль " + transport.getBrand() + " "
